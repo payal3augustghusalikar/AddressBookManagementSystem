@@ -28,6 +28,7 @@ public class AddressBookImplementation implements AddressBookInterface{
         Person person = new Person(firstName, lastName, city, state, email, MobileNo, zip);
         addressBook.add(person);
         System.out.println("Your Details has taken");
+        System.out.println("\n you can add multile person's entry");
     }
 
     public void displayPerson() {
