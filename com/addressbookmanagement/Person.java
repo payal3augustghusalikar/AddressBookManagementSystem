@@ -9,7 +9,6 @@ public class Person {
     long MobileNo;
     int zip;
 
-
     public Person(String firstName, String lastName, String city, String state, String email, long MobileNo, int zip) {
 
         this.firstName = firstName;
