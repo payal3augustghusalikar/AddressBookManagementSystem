@@ -38,10 +38,9 @@ public class AddressBookImplementation implements AddressBookInterface{
     }
 
     public void editPerson() {
-        Scanner inp = new Scanner(System.in);
 
         System.out.println("\n enter First name to edit details:");
-        String name = inp.nextLine();
+        String name = scanner.nextLine();
 
         for (Person person : addressBook) {
             System.out.println(person.toString());
@@ -53,28 +52,28 @@ public class AddressBookImplementation implements AddressBookInterface{
                         + "2) Email-Id\n"
                         + "3) Address\n"
                         + "4) Quit");
-                int numb = inp.nextInt();
-                inp = new Scanner(System.in);
+                int numb = scanner.nextInt();
+
                 switch (numb) {
                     case 1 -> {
                         System.out.println("enter new Mobile number:");
-                        long mobileNo = inp.nextLong();
+                        long mobileNo = scanner.nextLong();
                         person.setMobileNo(mobileNo);
                         System.out.println("mobile no. is updated\n");
                     }
                     case 2 -> {
                         System.out.println("enter new Email-id:");
-                        String email = inp.nextLine();
+                        String email = scanner.nextLine();
                         person.setEmail(email);
                         System.out.println("Email-id is updated\n");
                     }
                     case 3 -> {
                         System.out.println("enter your city");
-                        String city = inp.nextLine();
+                        String city = scanner.nextLine();
                         System.out.println("enter your state");
-                        String state = inp.nextLine();
+                        String state = scanner.nextLine();
                         System.out.println("enter your zip code");
-                        int zip = inp.nextInt();
+                        int zip = scanner.nextInt();
                         person.setCity(city);
                         person.setState(state);
                         person.setZip(zip);
@@ -85,7 +84,24 @@ public class AddressBookImplementation implements AddressBookInterface{
             }
             else
                 System.out.println("Person is not registered");
-            break;
+        }
+    }
+
+    public void deletePerson() {
+
+        System.out.println("enter First name to delit details:");
+        String name = scanner.nextLine();
+
+        for (int i=0; i<addressBook.size(); i++) {
+            String personName = addressBook.get(i).firstName;
+
+            if (name.equals(personName)) {
+                addressBook.remove(i);
+                System.out.println("this person details is deleted");
+                break;
+            }
+            else
+                System.out.println("please enter valid name");
         }
     }
 }

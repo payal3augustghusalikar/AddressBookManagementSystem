@@ -12,20 +12,21 @@ public class AddressBookMain {
         int loop=0;
         while (loop == 0) {
 
-            System.out.println("\n ---- Address Book ----\n"
+            System.out.println("\n ---- Address Book Person ----\n"
                     + "1) add Person\n"
                     + "2) Display Person \n"
                     + "3) Edit Person\n"
-                    + "\n  select any choice ==> ");
+                    + "4) delete Person\n"
+                    + "\n select any choice ==> ");
             int num = input.nextInt();
 
             switch (num) {
                 case 1 -> Menu.addPerson();
                 case 2 -> Menu.displayPerson();
-                case 3 -> {
-                    Menu.editPerson();
-                    loop = 1;
-                }
+                case 3 -> Menu.editPerson();
+                case 4 ->
+                    Menu.deletePerson();
+                
                 default -> throw new IllegalStateException("Unexpected value: " + num);
             }
         }
