@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookImplementation implements AddressBookInterface{
-
     ArrayList<Person> addressBook = new ArrayList<Person>();
+
     Scanner scanner = new Scanner(System.in);
 
     public void addPerson() {
