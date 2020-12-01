@@ -168,6 +168,7 @@ public class AddressBookImplementation implements AddressBookInterface {
     public void searchPersonByCity() {
         System.out.println("Enter City to Search Person");
         String userCity = scanner.nextLine();
+        System.out.println("The person list for same city are :");
         addressBook.stream().filter(map -> map.getCity().contains(userCity))
                 .forEach(addressBook -> System.out.println(addressBook));
     }
@@ -175,6 +176,7 @@ public class AddressBookImplementation implements AddressBookInterface {
     public void searchPersonByState() {
         System.out.println("Enter the state to Search Person by state");
         String userState = scanner.nextLine();
+        System.out.println("The person list for same state are :");
         addressBook.stream().filter(map -> map.getState().contains(userState))
                 .forEach(addressBook -> System.out.println(addressBook));
     }
