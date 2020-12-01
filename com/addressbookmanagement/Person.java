@@ -1,22 +1,22 @@
 package com.addressbookmanagement;
 
 public class Person {
-    String firstName;
-    String lastName;
-    String city;
-    String state;
-    String email;
-    long MobileNo;
-    int zip;
+   String firstName;
+   String lastName;
+   String city;
+   String state;
+   String email;
+   long mobileNo;
+   int zip;
 
-    public Person(String firstName, String lastName, String city, String state, String email, long MobileNo, int zip) {
+    public Person(String firstName, String lastName, String city, String state, String email, long mobileNo, int zip) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
         this.state = state;
         this.email = email;
-        this.MobileNo = MobileNo;
+        this.mobileNo = mobileNo;
         this.zip = zip;
     }
 
@@ -61,12 +61,12 @@ public class Person {
     }
 
     public long getMobileNo() {
-        return MobileNo;
+        return mobileNo;
     }
 
     public void setMobileNo(long mobileNo) {
 
-        MobileNo = mobileNo;
+        this.mobileNo = mobileNo;
     }
 
     public int getZip() {
@@ -79,7 +79,7 @@ public class Person {
 
     public String toString() {
         return "Person [firstName=" + firstName + ", lastName=" + lastName + ", city=" + city
-                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + MobileNo +"]"+"\n";
+                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + mobileNo +"]"+"\n";
     }
 
 }

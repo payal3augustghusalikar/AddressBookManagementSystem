@@ -8,6 +8,9 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
     AddressBookImplementation Menu = new AddressBookImplementation();
     AddressBookMain book = new AddressBookMain();
 
+    ArrayList<Person> addressBook = new ArrayList<Person>();
+
+
     Scanner scanner = new Scanner(System.in);
     ArrayList<AddressBookList> addressBookNameList = new ArrayList<>();
 
@@ -15,13 +18,13 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
 
         System.out.println("Enter AddressBook Name");
         String userInputBookName = scanner.next();
-        AddressBookList addressbook = new AddressBookList(userInputBookName);
-        addressBookNameList.add(addressbook);
+
+        AddressBookList multiaddressbook = new AddressBookList(userInputBookName);
+        addressBookNameList.add(multiaddressbook);
         System.out.println("New Address Book Name is added to list");
     }
 
     public void displayAddressBook() {
-
         System.out.println("Existing AddressBook Names are : ");
 
         for (AddressBookList addressBookList : addressBookNameList) {
@@ -30,33 +33,44 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
     }
 
     public void openAddressBook() {
-
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Adddress Book Name to open : ");
-        String openAddressbookName = scanner.next();
-        while (true) {
-            System.out.println("\n Address Book Name is :  " + openAddressbookName + "\n"
-                    + " Select Operation in address book\n"
-                    + "1) add Person\n"
-                    + "2) Display Person \n"
-                    + "3) Edit Person\n"
-                    + "4) delete Person\n"
-                    + "5) <== back to previous menu\n"
-                    + "\n select any choice ==> ");
-            int num = scanner.nextInt();
+        String openAddressbookName = scanner.nextLine();
 
-            switch (num) {
-                case 1 -> Menu.addPerson();
+        for (int j = 0; j < addressBookNameList.size(); j++) {
+            String checkBookName = addressBookNameList.get(j).userInputBookName;
 
-                case 2 -> Menu.displayPerson();
+            if (openAddressbookName.equals(checkBookName)) {
+                while (true) {
+                    System.out.println("\n Address Book Name is :  " + openAddressbookName + "\n"
+                            + " Select Operation in address book\n"
+                            + "1) add Person\n"
+                            + "2) Display Person \n"
+                            + "3) Edit Person\n"
+                            + "4) delete Person\n"
+                            + "5) <== back to previous menu\n"
+                            + "\n select any choice ==> ");
+                    int num = scanner.nextInt();
 
-                case 3 -> Menu.editPerson();
+                    switch (num) {
+                        case 1 -> Menu.addPerson();
 
-                case 4 -> Menu.deletePerson();
+                        case 2 -> Menu.displayPerson();
 
-                case 5 -> book.addressBookAction();
+                        case 3 -> Menu.editPerson();
 
-                default -> throw new IllegalStateException("Unexpected value: " + num);
-            }
+                        case 4 -> Menu.deletePerson();
+
+                        case 5 -> book.addressBookAction();
+
+                        default -> throw new IllegalStateException("Unexpected value: " + num);
+                    }
+                }
+            } else
+                System.out.println("this address book is not present First create it!!!");
+            break;
+
         }
     }
 }
+

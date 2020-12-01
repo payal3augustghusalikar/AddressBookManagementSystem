@@ -3,17 +3,17 @@ package com.addressbookmanagement;
 
 public class AddressBookList {
 
-    public String userInputBookName;
+  String userInputBookName;
 
     public AddressBookList(String userInputBookName) {
-    this.userInputBookName = userInputBookName;
+        this.userInputBookName = userInputBookName;
     }
 
     public String getUserInputBookName() {
         return userInputBookName;
     }
 
-    public void setUserInputBookName(String firstName) {
+    public void setUserInputBookName(String userInputBookName) {
         this.userInputBookName = userInputBookName;
     }
 
@@ -21,6 +21,4 @@ public class AddressBookList {
         return "AddressBookName : " + userInputBookName + "\n";
     }
 }
-
-
 
