@@ -52,7 +52,7 @@ public class Person {
         this.state = state;
     }
 
-    public String geEmail() {
+    public String getEmail() {
         return email;
     }
 

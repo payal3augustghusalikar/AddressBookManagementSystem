@@ -2,7 +2,9 @@ package com.addressbookmanagement;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBookImplementation implements AddressBookInterface {
     //  ArrayList<Person> addressBook = new ArrayList<Person>();
@@ -131,4 +133,50 @@ public class AddressBookImplementation implements AddressBookInterface {
             }
         }
     }
+    /*public void searchByCity(String city) {
+        Map<String, String> person = addressBook.values();
+                .stream()
+                .filter(map -> map.getCity().contains(city))
+                .collect(Collectors.toMap(map ->  city : "+map.getCity()));
+        System.out.println(person);
+    }*/
+
+   /* public void searchByCity(String city) {
+        System.out.println("enter the city name ");
+
+        String userCityName = scanner.nextLine();
+        addressBook.stream().forEach(
+                city -> System.out.println("cities are ==" + city);
+                .stream()
+                .filter(map -> map.getCity().contains(userCityName))
+                .collect(Collectors.toMap(map -> city : "+map.getCity()));
+        System.out.println(person);
+    }
+*/
+   /* public void searchByCity(String city) {//Search by City
+        System.out.println("enter the city name ");
+
+        String userCityName = scanner.nextLine();
+        Map<String, String> person = addressBook.values()//Dictionary of Person And City
+                .stream()
+                .filter(map -> map.getCity().contains(city))
+                .collect(Collectors.toMap(map -> map.getEmail() + " ", map -> " " + map.getfName() + " " + map.getlName() + ", City : " + map.getCity()));
+        System.out.println(person);
+    }*/
+
+
+    public void searchPersonByCity() {
+        System.out.println("Enter City to Search Person");
+        String userCity = scanner.nextLine();
+        addressBook.stream().filter(map -> map.getCity().contains(userCity))
+                .forEach(addressBook -> System.out.println(addressBook));
+    }
+
+    public void searchPersonByState() {
+        System.out.println("Enter the state to Search Person by state");
+        String userState = scanner.nextLine();
+        addressBook.stream().filter(map -> map.getState().contains(userState))
+                .forEach(addressBook -> System.out.println(addressBook));
+    }
 }
+

@@ -48,7 +48,9 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
                             + "2) Display Person \n"
                             + "3) Edit Person\n"
                             + "4) delete Person\n"
-                            + "5) <== back to previous menu\n"
+                            + "5) search by city\n"
+                            + "6) search by state \n"
+                            + "7) <== back to previous menu\n"
                             + "\n select any choice ==> ");
                     int num = scanner.nextInt();
 
@@ -61,7 +63,11 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
 
                         case 4 -> Menu.deletePerson();
 
-                        case 5 -> book.addressBookAction();
+                        case 5 -> Menu.searchPersonByCity();
+
+                        case 6 -> Menu.searchPersonByState();
+
+                        case 7 -> book.addressBookAction();
 
                         default -> throw new IllegalStateException("Unexpected value: " + num);
                     }
