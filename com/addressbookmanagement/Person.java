@@ -36,7 +36,7 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getCity() {
+    public  String getCity() {
         return city;
     }
 
@@ -64,10 +64,7 @@ public class Person {
         return mobileNo;
     }
 
-    public void setMobileNo(long mobileNo) {
-
-        this.mobileNo = mobileNo;
-    }
+    public void setMobileNo(long mobileNo) { this.mobileNo = mobileNo; }
 
     public int getZip() {
         return zip;

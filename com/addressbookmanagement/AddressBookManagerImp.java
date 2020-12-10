@@ -51,6 +51,8 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
                             + "5) search by city\n"
                             + "6) search by state \n"
                             + "7) <== back to previous menu\n"
+                            + "8) count by city\n"
+                            + "9) count by State\n"
                             + "\n select any choice ==> ");
                     int num = scanner.nextInt();
 
@@ -69,14 +71,18 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
 
                         case 7 -> book.addressBookAction();
 
+                        case 8 -> Menu.countByCity();
+
+                        case 9 -> Menu.countByState();
+
                         default -> throw new IllegalStateException("Unexpected value: " + num);
                     }
                 }
             } else
                 System.out.println("this address book is not present First create it!!!");
             break;
-
         }
     }
 }
+
 

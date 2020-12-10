@@ -1,17 +1,19 @@
 package com.addressbookmanagement;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        ArrayList<AddressBookList> addressBookNameList = new ArrayList<>();
         System.out.println("********* Welcome to Address Book Management System *********");
 
         AddressBookMain book = new AddressBookMain();
         book.addressBookAction();
-    }
 
+    }
 
     public void addressBookAction() {
         AddressBookManagerImp addressbookmanager = new AddressBookManagerImp();
