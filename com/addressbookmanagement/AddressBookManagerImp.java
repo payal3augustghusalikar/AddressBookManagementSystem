@@ -53,6 +53,7 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
                             + "7) <== back to previous menu\n"
                             + "8) count by city\n"
                             + "9) count by State\n"
+                            + "10) sort entry by first name\n"
                             + "\n select any choice ==> ");
                     int num = scanner.nextInt();
 
@@ -74,6 +75,8 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
                         case 8 -> Menu.countByCity();
 
                         case 9 -> Menu.countByState();
+
+                        case 10-> Menu.sortPersonByFirstName();
 
                         default -> throw new IllegalStateException("Unexpected value: " + num);
                     }

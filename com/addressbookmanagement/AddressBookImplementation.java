@@ -1,6 +1,7 @@
 package com.addressbookmanagement;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -165,5 +166,17 @@ public class AddressBookImplementation implements AddressBookInterface {
         System.out.println(addressBook.stream().collect(Collectors.groupingBy((Person P) -> P.getState())));
         System.out.println(addressBook.stream().collect(Collectors.groupingBy((Person P) -> P.getState(),
                 Collectors.counting())));
+    }
+
+    public void sortPersonByFirstName() {
+
+        for (Person P : addressBook) {
+            System.out.println(P.getFirstName());
+        }
+        System.out.println("---------After sorting the entry by first name----------");
+
+        addressBook.stream();
+        addressBook.sort(Comparator.comparing(Person::getFirstName));
+        addressBook.forEach((Person P) -> System.out.println(P.getFirstName() + " " + P.getLastName()));
     }
 }
