@@ -179,4 +179,40 @@ public class AddressBookImplementation implements AddressBookInterface {
         addressBook.sort(Comparator.comparing(Person::getFirstName));
         addressBook.forEach((Person P) -> System.out.println(P.getFirstName() + " " + P.getLastName()));
     }
+
+    public void sortPersonByCity() {
+
+        for (Person P : addressBook) {
+            System.out.println(P.getCity());
+        }
+        System.out.println("---------After sorting the entry by City----------");
+
+        addressBook.stream();
+        addressBook.sort(Comparator.comparing(Person::getCity));
+        addressBook.forEach((Person P) -> System.out.println(P.getFirstName() + " " + P.getLastName() + " " + P.getCity() + " " + P.getState() + " " + P.getMobileNo() + " " + P.getZip()));
+    }
+
+    public void sortPersonByState() {
+
+        for (Person P : addressBook) {
+            System.out.println(P.getState());
+        }
+        System.out.println("---------After sorting the entry by State----------");
+
+        addressBook.stream();
+        addressBook.sort(Comparator.comparing(Person::getState));
+        addressBook.forEach((Person P) -> System.out.println(P.getFirstName() + " " + P.getLastName() + " " + P.getCity() + " " + P.getState() + " " + P.getMobileNo() + " " + P.getZip()));
+    }
+
+    public void sortPersonByZip() {
+
+        for (Person P : addressBook) {
+            System.out.println(P.getZip());
+        }
+        System.out.println("---------After sorting the entry by Zip---------");
+
+        addressBook.stream();
+        addressBook.sort(Comparator.comparing(Person::getZip));
+        addressBook.forEach((Person P) -> System.out.println(P.getFirstName() + " " + P.getLastName() + " " + P.getCity() + " " + P.getState() + " " + P.getMobileNo() + " " + P.getZip()));
+    }
 }

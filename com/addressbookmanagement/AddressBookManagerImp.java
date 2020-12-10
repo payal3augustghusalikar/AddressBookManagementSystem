@@ -50,10 +50,13 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
                             + "4) delete Person\n"
                             + "5) search by city\n"
                             + "6) search by state \n"
-                            + "7) <== back to previous menu\n"
-                            + "8) count by city\n"
-                            + "9) count by State\n"
-                            + "10) sort entry by first name\n"
+                            + "7) count by city\n"
+                            + "8) count by State\n"
+                            + "9) sort entry by first name\n"
+                            + "10) sort entry by City\n"
+                            + "11) sort entry by State\n"
+                            + "12) sort entry by Zip\n"
+                            + "13) <== back to previous menu\n"
                             + "\n select any choice ==> ");
                     int num = scanner.nextInt();
 
@@ -70,13 +73,19 @@ public class AddressBookManagerImp implements AddressBookManagerInterface {
 
                         case 6 -> Menu.searchPersonByState();
 
-                        case 7 -> book.addressBookAction();
+                        case 7 -> Menu.countByCity();
 
-                        case 8 -> Menu.countByCity();
+                        case 8 -> Menu.countByState();
 
-                        case 9 -> Menu.countByState();
+                        case 9 -> Menu.sortPersonByFirstName();
 
-                        case 10-> Menu.sortPersonByFirstName();
+                        case 10 -> Menu.sortPersonByCity();
+
+                        case 11 -> Menu.sortPersonByState();
+
+                        case 12 -> Menu.sortPersonByZip();
+
+                        case 13 -> book.addressBookAction();
 
                         default -> throw new IllegalStateException("Unexpected value: " + num);
                     }
