@@ -1,7 +1,11 @@
 package com.addressbookmanagement;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -10,11 +14,57 @@ public class AddressBookImplementation implements AddressBookInterface {
     Scanner scanner = new Scanner(System.in);
     public static ArrayList<Person> addressBook = new ArrayList<Person>();
 
-    public AddressBookImplementation() {
+   /* public AddressBookImplementation() {
+
         ArrayList<Person> addressBook = new ArrayList<Person>();
     }
+*/
 
-    public void addPerson() {
+   /* public void writeDataInTXT() {
+
+        File fileName = new File
+        ArrayList<Person> addressBook = new ArrayList<Person>();
+        try {
+            FileWriter fw = new FileWriter(fileName);
+            Writer output = new BufferedWriter(fw);
+            int sz = addressBook.size();
+
+            for (int i = 0; i < sz; i++) {
+                output.write(addressBook.get(i).toString() + "\n");
+            }
+            output.close();
+        } catch (Exception e) {
+            System.out.println("I cannot create the file");
+        }
+    }*/
+
+    /*public void createFile() {
+        File fileName = new File("AddressBooktextfilenew.txt");
+        ArrayList<Person> addressBook = new ArrayList<>();
+        Person person;
+        while (!person.isEmpty()) {
+            Person person = JOptionPane.showInputDialog("Personinfo, Please" + addPerson());
+            System.out.println("Add Person Data");
+            // if (!person.isEmpty())
+            addressBook.add(person);
+            break;
+        }
+        try {
+            FileWriter fw = new FileWriter(fileName);
+            Writer output = new BufferedWriter(fw);
+            int sz = addressBook.size();
+
+            for (int i = 0; i < sz; i++) {
+                output.write(addressBook.get(i).toString() + "\n");
+            }
+            output.close();
+        } catch (Exception e) {
+            System.out.println("I cannot create the file");
+        }
+    }
+*/
+
+    public synchronized void addPerson() {
 
         System.out.println("Enter your first name");
         String personName1 = scanner.nextLine();
@@ -22,7 +72,6 @@ public class AddressBookImplementation implements AddressBookInterface {
         duplicateCheck(personName1);
 
         Scanner scanner = new Scanner(System.in);
-        // System.out.println(" confirm your first name :");
         String firstName = personName1;
         System.out.println("enter your last name:");
         String lastName = scanner.nextLine();
@@ -36,10 +85,47 @@ public class AddressBookImplementation implements AddressBookInterface {
         long MobileNo = scanner.nextLong();
         System.out.println("enter your zip code");
         int zip = scanner.nextInt();
+        String COMMA_DELIMITER = ",";
+        String NEW_LINE_SEPARATOR = "\n";
+        String FILE_HEADER = "First Name, Last Name, City, State, Email, mobile Number,Zip";
+        FileWriter fileWriter = null;
 
-        person = new Person(firstName, lastName, city, state, email, MobileNo, zip);
-        addressBook.add(person);
+        try {
 
+            person = new Person(firstName, lastName, city, state, email, MobileNo, zip);
+            addressBook.add(person);
+
+            fileWriter = new FileWriter("E:\\AddressBook.csv", true);
+            fileWriter.append(FILE_HEADER);
+            for (Person person : addressBook) {
+                fileWriter.append(NEW_LINE_SEPARATOR);
+                fileWriter.append(person.getFirstName());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(person.getLastName());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(person.getCity());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(person.getState());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(person.getEmail());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(person.getMobileNo()));
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(String.valueOf(person.getZip()));
+            }
+            System.out.println("Write CSV successfully!");
+        } catch (Exception e) {
+            System.out.println("Writing CSV error!");
+            e.printStackTrace();
+        } finally {
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                System.out.println("Flushing/closing error!");
+                e.printStackTrace();
+            }
+        }
         System.out.println("Your Details has taken");
         System.out.println("\n you can add multiple person's entry");
         System.out.println("------------------------------------");
@@ -47,11 +133,22 @@ public class AddressBookImplementation implements AddressBookInterface {
 
 
     public void displayPerson() {
-        System.out.println("\nEntered Person Details is:");
+       /* System.out.println("\nEntered Person Details is:");
         for (Person person : addressBook) {
             System.out.println(person.toString());
+        }*/
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("D:\\Address.csv"));
+            for (String line : lines) {
+                line = line.replace("\"", "");
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            System.out.println("No data found");
+            e.printStackTrace();
         }
     }
+
 
     public void editPerson() {
 
